@@ -1,7 +1,17 @@
 import React, { Component } from "react";
-import { StyleSheet, Text, View, Image } from "react-native";
-
+import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
+import { Actions } from 'react-native-router-flux';
 export default class ArtistDetailView extends Component{
+
+  static navigationOptions = {
+    title: "Artist Detail",
+    headerLeft: () => (
+      <TouchableOpacity onPress={() => Actions.pop()}>
+        <Text style={{ marginLeft: 20 }}>Volver</Text>
+      </TouchableOpacity>
+    ),
+  };
+
     render(){
         const { artist } = this.props;
         return(
@@ -15,7 +25,11 @@ export default class ArtistDetailView extends Component{
                     <Text style={styles.text}>Oyentes: {artist.listeners}</Text>
                   </View>
                   <View style={styles.box2}>
-                    <Text style={styles.text}>Trasmitible: No</Text>
+                    {
+                      this.stremeable === '0'?
+                      <Text style={styles.text}>Trasmitible: Si</Text> :
+                      <Text style={styles.text}>Trasmitible: No</Text>
+                    }
                   </View>
                 </View>
             </View>
@@ -26,7 +40,7 @@ export default class ArtistDetailView extends Component{
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "black",
+    backgroundColor: "white",
   },
   image: {
     width: 'auto',
@@ -36,14 +50,14 @@ const styles = StyleSheet.create({
     fontSize: 20,
     marginTop: 10,
     marginLeft: 10,
-    color: "white",
+    color: "black",
   },
   name: {
     fontSize: 45,
     marginTop: 10,
     marginLeft: 10,
     marginBottom: 10,
-    color: "white",
+    color: "black",
     fontWeight: 'bold',
   },
   box1: {

@@ -1,12 +1,21 @@
 import React, { Component } from "react";
-import { StyleSheet, View, Text } from "react-native";
-
+import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
+import { Actions } from 'react-native-router-flux';
 import ArtistList from "./ArtistList";
 import { getMusicData } from "./api-client";
 
 export default class homeView extends Component{
   state = {
     artists: null,
+  };
+
+  static navigationOptions = {
+    title: "Home",
+    headerLeft: () => (
+      <TouchableOpacity onPress={() => Actions.login()}>
+        <Text style={{ marginLeft: 20 }}>Volver</Text>
+      </TouchableOpacity>
+    ),
   };
 
   componentDidMount() {
@@ -27,7 +36,7 @@ export default class homeView extends Component{
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "black",
+    backgroundColor: "white",
     paddingTop: 50,
   },
 });

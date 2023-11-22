@@ -18,7 +18,7 @@ export default class ArtistBox extends Component{
 const styles = StyleSheet.create({
   artistBox: {
     margin: 5,
-    backgroundColor: "#232323",
+    backgroundColor: "#F8F8F8",
     flexDirection: "row",
     elevation: 2,
   },
@@ -35,6 +35,6 @@ const styles = StyleSheet.create({
   name: {
     fontSize: 20,
     marginTop: 10,
-    color: "white",
+    color: "black",
   },
 });

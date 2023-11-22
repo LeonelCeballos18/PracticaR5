@@ -23,6 +23,7 @@ function getMusicData() {
                 name: artist.name,
                 image: data.data[0].artist.picture_medium,
                 listeners: artist.listeners,
+                stremeable: artist.stremeable,
               };
             });
         })
